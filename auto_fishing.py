@@ -10,21 +10,18 @@ import argparse
 
 
 parser = argparse.ArgumentParser(description='Auto Fishing ROX. On 720p only.')
-parser.add_argument('--ip', type=str, default='127.0.0.1', help='ADB Connect to IP')
-parser.add_argument('--port', type=int, default=5555, help='ADB Connect to Port')
+parser.add_argument('--device', type=str, default='emulator-5556', help='ADB Connect to device')
 parser.add_argument('--bait_number', type=int, default=50, help='Number of Bait used')
 parser.add_argument('--monitor_number', type=int, default=1, help='Monitor that the program lived')
 parser.add_argument('--offset_x', type=int, default=0, help='Offset X of the game (default is top left)')
 parser.add_argument('--offset_y', type=int, default=33, help='Offset Y of the game (default is top left)')
 
 args = parser.parse_args()
-print(args.ip)
-print(args.port)
+print(args.device)
 print(args.bait_number)
 
 client = Client(host="127.0.0.1", port=5037)
-client.remote_connect(args.ip, args.port)
-device = client.device(f"{args.ip}:{args.port}")
+device = client.device(f"{args.device}")
     
 print(device)
 
